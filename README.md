@@ -53,6 +53,30 @@ packer build Packer/server.json
 Once the command is successully executed, a virtual machine image will be created in the Resource Group "vmImages-rg"
 
 
+5.Deploy infrastructure using Terraform
+a.The terraformvars.tf file contains the variable values. Modify them as per the infrastructure requirement
+The below variables can be modified 
+  prefix : Prefix to use for creating the resources
+  location : Location where the resources has to be deployed
+  applicationName : Name of the application deployed 
+  environment : Environment type of the application (dev,test,prod etc)
+  vmCount : Number of VMs to deploy
+  vmImageResourceGroup : Resource group that contains the VM Image
+  vmImageName : Name of the Image to use for creating the VM
+  username : Default Admin UserId for the VM
+  password : Default Admin Password for the VM
 
-### Output
+b.Run the Terraform plan command
+```sh
+terraform plan -out solution.plan
+```
 
+c.Run the Terraform apply command
+```sh
+terraform apply "solution.plan"
+```
+
+d.Destroy the environment using the Terraform destory command
+```sh
+terraform destroy
+```
