@@ -51,6 +51,9 @@ b.Run the below command . This step could take a while to complete
 packer build Packer/server.json
 ```
 Once the command is successully executed, a virtual machine image will be created in the Resource Group "vmImages-rg"
+![image](https://user-images.githubusercontent.com/24310615/120959169-1a276580-c751-11eb-9012-204add5c7e01.png)
+Portal view: 
+![image](https://user-images.githubusercontent.com/24310615/120959299-55c22f80-c751-11eb-8a03-fddf7882583c.png)
 
 
 5.Deploy infrastructure using Terraform
@@ -66,17 +69,30 @@ The below variables can be modified
   username : Default Admin UserId for the VM
   password : Default Admin Password for the VM
 
-b.Run the Terraform plan command
+b.From the Terraform directory, Run the Terraform plan command 
 ```sh
 terraform plan -out solution.plan
 ```
+![image](https://user-images.githubusercontent.com/24310615/120959549-e7ca3800-c751-11eb-8b16-0a59da252867.png)
 
 c.Run the Terraform apply command
 ```sh
 terraform apply "solution.plan"
+```
+![image](https://user-images.githubusercontent.com/24310615/120959921-c61d8080-c752-11eb-8ca7-c4690c3e6c56.png)
+Portal View
+![image](https://user-images.githubusercontent.com/24310615/120960366-9622ad00-c753-11eb-88bb-a4112dcc8092.png)
+
+d.Get the load balancer IP address and access http
+```sh
+curl http://_load_balancer_publicip_
+
+Output: 
+Hello, World!
 ```
 
 d.Destroy the environment using the Terraform destory command
 ```sh
 terraform destroy
 ```
+![image](https://user-images.githubusercontent.com/24310615/120961539-eb5fbe00-c755-11eb-8188-ce3ec558d479.png)
